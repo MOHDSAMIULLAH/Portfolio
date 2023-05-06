@@ -16,7 +16,7 @@ const Home = () => {
         </div>
         <div className="content">
             <h5>Hello I'm</h5>
-            <h1>Mohd Samiullah</h1>
+            <h1><span className='name'>Mohd </span> <span className='name'> Samiullah </span></h1>
             <h5 >Fullstack Web Developer</h5>
             <CTA />
         {/* <div className="footer__socials">

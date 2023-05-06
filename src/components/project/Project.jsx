@@ -1,8 +1,8 @@
 import './project.css'
 import notes from '../../assets/notes-app.jpeg'
 import movieapp from '../../assets/movieapp.jpeg'
-import newsapp from '../../assets/newsapp.jpeg'
-import textavatar from '../../assets/textavatar.jpeg'
+import textUtils from '../../assets/textUtils.jpeg'
+import ecommerce from '../../assets/e-commerce.jpeg'
 
 const Project = () => {
 
@@ -48,7 +48,7 @@ const Project = () => {
 
         <article className="project__item">
           <div className="project__item-image">
-            <img src={textavatar} alt="Notes App" />
+            <img src={textUtils} alt="Notes App" />
           </div>
           <h3>TextUtils App</h3>
 
@@ -76,7 +76,7 @@ const Project = () => {
         {/* **************************   E-Commerce Website      ************************** */}
         <article className="project__item">
           <div className="project__item-image">
-            <img src={notes} alt="Notes App" />
+            <img src={ecommerce} alt="Notes App" />
           </div>
           <h3>E-Commerce Website </h3>
 

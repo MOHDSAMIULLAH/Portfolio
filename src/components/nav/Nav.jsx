@@ -11,11 +11,11 @@ const Nav = () => {
   const [activeNav, setActiveNav] = useState('#')
   return (
     <nav>
-      <a href="#home" rel="noreferrer" onClick={() => setActiveNav('#home')} className={activeNav === '#home' ? 'active' : ''}><AiOutlineHome /></a>
-      <a href="#about" rel="noreferrer" onClick={() => setActiveNav('#about')} className= {activeNav ==='#about' ? 'active' : ''}><AiOutlineUser /></a>
-      <a href="#skills" rel="noreferrer" onClick={() => setActiveNav('#skills')} className= {activeNav ==='#skills' ? 'active' : ''}><BiBook /></a>
-      <a href="#project" rel="noreferrer" onClick={() => setActiveNav('#project')} className= {activeNav ==='#project' ? 'active' : ''}><RiServiceLine /></a>
-      <a href="#contact" rel="noreferrer" onClick={() => setActiveNav('#contact')} className= {activeNav ==='#contact' ? 'active' : ''}><BiMessageSquareDetail /></a>
+      <a href="#home" title='home' rel="noreferrer" onClick={() => setActiveNav('#home')} className={activeNav === '#home' ? 'active' : ''}><AiOutlineHome /></a>
+      <a href="#about" title='about' rel="noreferrer" onClick={() => setActiveNav('#about')} className= {activeNav ==='#about' ? 'active' : ''}><AiOutlineUser /></a>
+      <a href="#skills" title='skills' rel="noreferrer" onClick={() => setActiveNav('#skills')} className= {activeNav ==='#skills' ? 'active' : ''}><BiBook /></a>
+      <a href="#project" title='project' rel="noreferrer" onClick={() => setActiveNav('#project')} className= {activeNav ==='#project' ? 'active' : ''}><RiServiceLine /></a>
+      <a href="#contact" title='contact' rel="noreferrer" onClick={() => setActiveNav('#contact')} className= {activeNav ==='#contact' ? 'active' : ''}><BiMessageSquareDetail /></a>
     </nav>
   )
 }

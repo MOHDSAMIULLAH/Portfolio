@@ -12,6 +12,7 @@
 
 .card_line{
     display :flex;
+    flex-wrap: wrap;
     
 }
 
