@@ -3,6 +3,7 @@ import notes from '../../assets/notes-app.jpeg'
 import movieapp from '../../assets/movieapp.jpeg'
 import textUtils from '../../assets/textUtils.jpeg'
 import ecommerce from '../../assets/e-commerce.jpeg'
+import library from '../../assets/library.png'
 
 const Project = () => {
 
@@ -50,11 +51,11 @@ const Project = () => {
           <div className="project__item-image">
             <img src={textUtils} alt="Notes App" />
           </div>
-          <h3>TextUtils App</h3>
+          <h3>Text Format App</h3>
 
           <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/TextUtils" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://textutils-web-app.netlify.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
+            <a href="https://github.com/MOHDSAMIULLAH/Text-Format-App" className='btn' target="_blank" rel="noreferrer">Github</a>
+            <a href="https://text-format-app.netlify.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
         </article>
 
@@ -73,18 +74,18 @@ const Project = () => {
         </article> */}
 
 
-        {/* **************************   E-Commerce Website      ************************** */}
+        {/* **************************   Library Management     ************************** */}
         <article className="project__item">
           <div className="project__item-image">
-            <img src={ecommerce} alt="Notes App" />
+            <img src={library} alt="Notes App" />
           </div>
-          <h3>E-Commerce Website </h3>
+          <h3>Library Mangement System </h3>
 
 
           <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/E-Commerce-Main" className='btn' target="_blank" rel="noreferrer">Github</a>
+            <a href="https://github.com/MOHDSAMIULLAH/Library_Mangement_System" className='btn' target="_blank" rel="noreferrer">Github</a>
 
-             <a href="https://e-commerce-web-main.netlify.app/"  className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
+             <a href="https://github.com/MOHDSAMIULLAH/Library_Mangement_System"  className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
         </article>
 
