@@ -103,8 +103,8 @@ const Project = () => {
 
 
           <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/iNotebook" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://inotebook-mernn.netlify.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
+            <a href="https://github.com/MOHDSAMIULLAH/iNotebook-MERN" className='btn' target="_blank" rel="noreferrer">Github</a>
+            <a href="https://i-notebook-mern-six.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
         </article>
 
