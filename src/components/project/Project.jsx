@@ -73,8 +73,8 @@ const Project = () => {
 
 
           <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/Home_Rental_Application" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://home-rental-application-dun.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
+            <a href="https://github.com/MOHDSAMIULLAH/Home_Rental_App_MERN" className='btn' target="_blank" rel="noreferrer">Github</a>
+            <a href="https://home-rental-app-mern.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
         </article>
         {/* **************************   Social Media App      ************************** */}
