@@ -1,9 +1,9 @@
 import './project.css'
 import MovieMate from '../../assets/MovieMate.PNG'
 import iNotebook from '../../assets/iNotebook.PNG'
-import food from '../../assets/food.png'
+import admin from '../../assets/admin.png'
 import food_ordering from '../../assets/food_ordering.png'
-import ecom from '../../assets/ecommerce.png'
+import store from '../../assets/store.png'
 import homerental from '../../assets/homerental.png'
 import social from '../../assets/social media.png'
 import Text_Transform_App from '../../assets/Text_Transform_App.PNG'
@@ -27,8 +27,8 @@ const Project = () => {
 
 
           <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/food-ordering-app-NEXT" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://food-ordering-next.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
+            <a href="https://github.com/MOHDSAMIULLAH/food-ordering-App-next" className='btn' target="_blank" rel="noreferrer">Github</a>
+            <a href="https://food-ordering-app-six-xi.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
         </article>
 
@@ -37,14 +37,29 @@ const Project = () => {
 
         <article className="project__item">
           <div className="project__item-image">
-            <img src={ecom} alt="Notes App" />
+            <img src={store} alt="store App" />
           </div>
-          <h3>MERN E-Commerce Website</h3>
+          <h3>E-Commerce Clothes store(NextJs)</h3>
 
 
           <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/MERN-E-Commerce-Website" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://ecommerce-mern-code-2.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
+            <a href="https://github.com/MOHDSAMIULLAH/Ecommerce-NextJs-store" className='btn' target="_blank" rel="noreferrer">Github</a>
+            <a href="https://ecommerce-next-js-clothes-store.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
+          </div>
+        </article>
+    
+        {/* **************************   MERN E-Commerce Dashboard      ************************** */}
+
+        <article className="project__item">
+          <div className="project__item-image">
+            <img src={admin} alt="store App" />
+          </div>
+          <h3>Dashboard (Clothes store)</h3>
+
+
+          <div className="project__item-cta">
+            <a href="https://github.com/MOHDSAMIULLAH/Ecommerce-NextJs-admin" className='btn' target="_blank" rel="noreferrer">Github</a>
+            <a href="https://ecommerce-next-js-admin-ten.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
         </article>
     
@@ -64,7 +79,7 @@ const Project = () => {
         </article>
         {/* **************************   Social Media App      ************************** */}
 
-        <article className="project__item">
+        {/* <article className="project__item">
           <div className="project__item-image">
             <img src={social} alt="Notes App" />
           </div>
@@ -75,7 +90,7 @@ const Project = () => {
             <a href="https://github.com/MOHDSAMIULLAH/Social-Media-App" className='btn' target="_blank" rel="noreferrer">Github</a>
             <a href="https://social-media-app-eight-green.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
-        </article>
+        </article> */}
 
     
         {/* **************************   iNotebook      ************************** */}
@@ -89,7 +104,7 @@ const Project = () => {
 
           <div className="project__item-cta">
             <a href="https://github.com/MOHDSAMIULLAH/iNotebook" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://inotebook-main.netlify.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
+            <a href="https://inotebook-mernn.netlify.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
         </article>
 
@@ -110,7 +125,7 @@ const Project = () => {
 
         {/* **************************   Text_Transform_App      ************************** */}
 
-        <article className="project__item">
+        {/* <article className="project__item">
           <div className="project__item-image">
             <img src={Text_Transform_App} alt="Notes App" />
           </div>
@@ -120,7 +135,7 @@ const Project = () => {
             <a href="https://github.com/MOHDSAMIULLAH/Text-Format-App" className='btn' target="_blank" rel="noreferrer">Github</a>
             <a href="https://text-format-app.netlify.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
-        </article>
+        </article> */}
 
 
       </div>
