@@ -13,21 +13,6 @@ const Skills = () => {
         <div className="skills__frontend">
           <h3>Hard Skills</h3>
           <div className="skills__content">
-            <article className='skills__details'>
-              <BsPatchCheckFill className='skills__details-icon' />
-              <div>
-                <h4>HTML</h4>
-                <small className='text-light'>skillsd</small>
-              </div>
-            </article>
-
-            <article className='skills__details'>
-              <BsPatchCheckFill className='skills__details-icon' />
-              <div>
-                <h4>CSS</h4>
-                <small className='text-light'>Intermediate</small>
-              </div>
-            </article>
 
             <article className='skills__details'>
               <BsPatchCheckFill className='skills__details-icon' />
@@ -40,31 +25,7 @@ const Skills = () => {
             <article className='skills__details'>
               <BsPatchCheckFill className='skills__details-icon' />
               <div>
-                <h4>Bootstrap</h4>
-                <small className='text-light'>skillsd</small>
-              </div>
-            </article>
-
-            <article className='skills__details'>
-              <BsPatchCheckFill className='skills__details-icon' />
-              <div>
                 <h4>React</h4>
-                <small className='text-light'>Intermediade</small>
-              </div>
-            </article>
-
-            <article className='skills__details'>
-              <BsPatchCheckFill className='skills__details-icon' />
-              <div>
-                <h4>MySQL</h4>
-                <small className='text-light'>Intermediade</small>
-              </div>
-            </article>
-
-            <article className='skills__details'>
-              <BsPatchCheckFill className='skills__details-icon' />
-              <div>
-                <h4>DBMS</h4>
                 <small className='text-light'>Intermediade</small>
               </div>
             </article>
@@ -80,7 +41,22 @@ const Skills = () => {
             <article className='skills__details'>
               <BsPatchCheckFill className='skills__details-icon' />
               <div>
-                <h4>JAVA</h4>
+                <h4>NextJs</h4>
+                <small className='text-light'>Intermediade</small>
+              </div>
+            </article>
+            <article className='skills__details'>
+              <BsPatchCheckFill className='skills__details-icon' />
+              <div>
+                <h4>Node</h4>
+                <small className='text-light'>skillsd</small>
+              </div>
+            </article>
+
+            <article className='skills__details'>
+              <BsPatchCheckFill className='skills__details-icon' />
+              <div>
+                <h4>Express</h4>
                 <small className='text-light'>Intermediade</small>
               </div>
             </article>
@@ -88,8 +64,33 @@ const Skills = () => {
             <article className='skills__details'>
               <BsPatchCheckFill className='skills__details-icon' />
               <div>
+                <h4>MongoDB</h4>
+                <small className='text-light'>Intermediade</small>
+              </div>
+            </article>
+
+
+            <article className='skills__details'>
+              <BsPatchCheckFill className='skills__details-icon' />
+              <div>
                 <h4>Tailwind CSS</h4>
                 <small className='text-light'>Intermediade</small>
+              </div>
+            </article>
+
+            <article className='skills__details'>
+              <BsPatchCheckFill className='skills__details-icon' />
+              <div>
+                <h4>PostgreSQL</h4>
+                <small className='text-light'>skillsd</small>
+              </div>
+            </article>
+
+            <article className='skills__details'>
+              <BsPatchCheckFill className='skills__details-icon' />
+              <div>
+                <h4>Web Scraping</h4>
+                <small className='text-light'>Intermediate</small>
               </div>
             </article>
 

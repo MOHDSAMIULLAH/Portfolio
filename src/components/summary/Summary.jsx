@@ -9,54 +9,7 @@ const Summary = () => {
       <h2>Technical skills summary</h2>
 
       <div className="container summary__container">
-        
-        {/* ================ WEB DEVELOPMENT================== */}
-        <article className="summary">
-          <div className="summary__head">
-            <h3>HTML</h3>
-          </div>
-
-          <ul className="summary__list">  
-            <li>
-              <BiCheck className='summary__list-icon' />
-              <p>Good understanding of the structure of an HTML document.</p>
-            </li>
-            
-            <li>
-              <BiCheck className='summary__list-icon' />
-              <p>Having the cocept of different types of tags, including headings, paragraphs, lists, links, images, and more.</p>
-            </li>
-            <li>
-              <BiCheck className='summary__list-icon' />
-              <p>used semantic elements which include header, nav, main, section, article, and footer.</p>
-            </li>
-                        
-          </ul>
-        </article>
-        {/* ================ WEB DEVELOPMENT================== */}
-
-        <article className="summary">
-          <div className="summary__head">
-            <h3>CSS</h3>
-          </div>
-
-          <ul className="summary__list">
-            <li>
-              <BiCheck className='summary__list-icon' />
-              <p>To apply styles effectively I have learned the syntax of CSS and Selectors.</p>
-            </li>
-            
-            <li>
-              <BiCheck className='summary__list-icon' />
-              <p>Comfortable in handling box model as well as Layouts. </p>
-            </li>
-            <li>
-              <BiCheck className='summary__list-icon' />
-              <p>Implemented media queries for Responsive Design along with transition and animation properties.</p>
-            </li>
-                        
-          </ul>
-        </article>
+       
         {/* ================ WEB DEVELOPMENT================== */}
 
         <article className="summary">
@@ -103,7 +56,7 @@ const Summary = () => {
             </li>
             <li>
               <BiCheck className='summary__list-icon' />
-              <p>Knows to manage application state using either local state within a component or a centralized state management tool like Redux.</p>
+              <p>Knows to manage application state using centralized state management tool like Redux.</p>
             </li>
                     
           </ul>
@@ -112,30 +65,85 @@ const Summary = () => {
         {/* ===================== UI/UX ====================== */}
         <article className="summary">
           <div className="summary__head">
-            <h3>Java</h3>
+            <h3>NextJs</h3>
           </div>
 
           <ul className="summary__list">
             <li>
               <BiCheck className='summary__list-icon' />
-              <p>Good knowledge of OOPs concept like Abstraction, Encapsulation, Polymorphism, Inheritance.</p>
+              <p>Strong understanding of Next.js framework, including its file-based routing system and API routes.</p>
             </li>
             
             
             <li>
               <BiCheck className='summary__list-icon' />
-              <p>Good practical knowledge of Collections, Framework and Data Structure like List, Set, Map and Queue etc.</p>
+              <p>Experience in building server-rendered React applications using Next.js.
+              </p>
             </li>  
 
             <li>
               <BiCheck className='summary__list-icon' />
-              <p>Good in Exception handling and written custom exception..</p>
+              <p>Familiar with implementing dynamic routing and pre-fetching data for faster navigation.
+              </p>
             </li>             
+          </ul>
+        </article>
+ 
+        {/* ================ WEB DEVELOPMENT================== */}
+        <article className="summary">
+          <div className="summary__head">
+            <h3>Node</h3>
+          </div>
+
+          <ul className="summary__list">  
+            <li>
+              <BiCheck className='summary__list-icon' />
+              <p>Proficient in building server-side applications using Node.js with an understanding of its event-driven and non-blocking architecture.</p>
+            </li>
+            
+            <li>
+              <BiCheck className='summary__list-icon' />
+              <p>Familiar with creating RESTful APIs and managing request/response cycles.
+              </p>
+            </li>
+            <li>
+              <BiCheck className='summary__list-icon' />
+              <p>Knowledge of middleware integration using frameworks like Express.js.
+              </p>
+            </li>
+                        
           </ul>
         </article>
         {/* ================ WEB DEVELOPMENT================== */}
 
         <article className="summary">
+          <div className="summary__head">
+            <h3>MongoDB</h3>
+          </div>
+
+          <ul className="summary__list">
+            <li>
+              <BiCheck className='summary__list-icon' />
+              <p>Strong understanding of MongoDB as a NoSQL database, including its document-based structure.</p>
+            </li>
+            
+            <li>
+              <BiCheck className='summary__list-icon' />
+              <p>Proficient in designing schemas and collections with embedded and referenced data models.
+              </p>
+            </li>
+            <li>
+              <BiCheck className='summary__list-icon' />
+              <p>Experience with CRUD operations (Create, Read, Update, Delete) using MongoDB queries.
+              </p>
+            </li>
+                        
+          </ul>
+        </article>
+        
+         {/* ================ WEB DEVELOPMENT================== */}
+
+         <article className="summary">
           <div className="summary__head">
             <h3>SQL</h3>
           </div>
@@ -161,11 +169,6 @@ const Summary = () => {
                         
           </ul>
         </article>
-        {/* ================ content creation================== */}
-
-
-        
-        
 
       </div>
     </section>

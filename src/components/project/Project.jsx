@@ -4,7 +4,7 @@ import iNotebook from '../../assets/iNotebook.PNG'
 import admin from '../../assets/admin.png'
 import food_ordering from '../../assets/food_ordering.png'
 import store from '../../assets/store.png'
-import homerental from '../../assets/homerental.png'
+import PERN from '../../assets/PERN.png'
 import social from '../../assets/social media.png'
 import Text_Transform_App from '../../assets/Text_Transform_App.PNG'
 
@@ -67,14 +67,14 @@ const Project = () => {
 
         <article className="project__item">
           <div className="project__item-image">
-            <img src={homerental} alt="Notes App" />
+            <img src={PERN} alt="Notes App" />
           </div>
-          <h3>Home Rental Application</h3>
+          <h3>PERN Chat App</h3>
 
 
           <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/Home_Rental_App_MERN" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://home-rental-app-mern.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
+            <a href="https://github.com/MOHDSAMIULLAH/pern-chat-app" className='btn' target="_blank" rel="noreferrer">Github</a>
+            <a href="https://pern-chat-app-master-qq4p.onrender.com" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
         </article>
         {/* **************************   Social Media App      ************************** */}
