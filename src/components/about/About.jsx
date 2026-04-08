@@ -3,7 +3,7 @@ import ME from '../../assets/sami.png'
 import './about.css'
 
 const stats = [
-  { value: '3+',  label: 'Years Experience'        },
+  { value: '2+',  label: 'Years Experience'        },
   { value: '15+', label: 'Projects Completed'       },
   { value: '15+', label: 'Technologies Mastered'    },
 ]
@@ -72,7 +72,7 @@ const About = () => {
               async jobs through distributed SQS queues.
             </p>
             <p className="about__bio">
-              With an M.Tech from Jamia Millia Islamia (88%) and 3+ years across Node.js,
+              With an M.Tech from Jamia Millia Islamia (88%) and 2+ years across Node.js,
               TypeScript, PostgreSQL, Docker, and AWS, I bring an engineering-first discipline
               to every system I build — from microservice architecture to LLM-integrated
               data pipelines. I write backend systems that are observable, maintainable, and
