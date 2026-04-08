@@ -1,143 +1,151 @@
-import './project.css'
-import MovieMate from '../../assets/MovieMate.PNG'
-import iNotebook from '../../assets/iNotebook.PNG'
-import admin from '../../assets/admin.png'
+import { motion } from 'framer-motion'
+import { BsGithub, BsBoxArrowUpRight } from 'react-icons/bs'
+import MovieMate    from '../../assets/MovieMate.PNG'
+import iNotebook   from '../../assets/iNotebook.PNG'
+import admin       from '../../assets/admin.png'
 import food_ordering from '../../assets/food_ordering.png'
-import store from '../../assets/store.png'
-import PERN from '../../assets/PERN.png'
-import social from '../../assets/social media.png'
-import Text_Transform_App from '../../assets/Text_Transform_App.PNG'
+import store       from '../../assets/store.png'
+import PERN        from '../../assets/PERN.png'
+import './project.css'
+
+const projects = [
+  {
+    image:   PERN,
+    title:   'PERN Real-Time Chat App',
+    desc:    'Engineered a production-grade real-time messaging system on the PERN stack — designed normalized PostgreSQL schema for message persistence, built a WebSocket server enabling sub-100ms delivery, and secured all API routes with JWT middleware and bcrypt-hashed credentials.',
+    tags:    ['PostgreSQL', 'Express', 'React', 'Node.js', 'WebSockets', 'JWT'],
+    github:  'https://github.com/MOHDSAMIULLAH/pern-chat-app',
+    demo:    'https://pern-chat-app-master-qq4p.onrender.com',
+    featured: true,
+  },
+  {
+    image:   store,
+    title:   'E-Commerce Platform (Full-Stack)',
+    desc:    'Architected a full-stack e-commerce platform with Next.js API routes and MongoDB — designed normalized product, cart, and order schemas, built RESTful endpoints for catalog management and checkout flow, and implemented session-based auth with an independent admin microservice for inventory control.',
+    tags:    ['Next.js', 'MongoDB', 'REST API', 'Tailwind CSS', 'React'],
+    github:  'https://github.com/MOHDSAMIULLAH/Ecommerce-NextJs-store',
+    demo:    'https://ecommerce-next-js-clothes-store.vercel.app/',
+    featured: true,
+  },
+  {
+    image:   food_ordering,
+    title:   'Food Delivery App',
+    desc:    'Developed a scalable food delivery platform using Next.js and Node.js — designed REST APIs for restaurant listings, dynamic menu management, and full order lifecycle from cart to confirmation, with optimized MongoDB queries and mobile-first UI reducing checkout friction.',
+    tags:    ['Next.js', 'Node.js', 'REST API', 'MongoDB', 'Tailwind CSS'],
+    github:  'https://github.com/MOHDSAMIULLAH/food-ordering-App-next',
+    demo:    'https://food-ordering-app-six-xi.vercel.app/',
+    featured: true,
+  },
+  {
+    image:   admin,
+    title:   'E-Commerce Admin Dashboard',
+    desc:    'Built a secure admin panel with Next.js API routes and MongoDB — implemented RBAC for protected management routes, aggregation pipelines for real-time sales analytics via Chart.js, and RESTful CRUD endpoints for inventory and order state management.',
+    tags:    ['Next.js', 'MongoDB', 'RBAC', 'Chart.js', 'REST API'],
+    github:  'https://github.com/MOHDSAMIULLAH/Ecommerce-NextJs-admin',
+    demo:    'https://ecommerce-next-js-admin-ten.vercel.app/',
+  },
+  {
+    image:   iNotebook,
+    title:   'iNotebook — Secure Cloud Notes',
+    desc:    'Designed and shipped a cloud note-taking app on the MERN stack — built Express.js REST API with JWT-based stateless auth, bcrypt-secured password storage, Mongoose-validated MongoDB schemas, and full CRUD with ownership guards to prevent unauthorized data access.',
+    tags:    ['MongoDB', 'Express', 'React', 'Node.js', 'JWT', 'REST API'],
+    github:  'https://github.com/MOHDSAMIULLAH/iNotebook-MERN',
+    demo:    'https://i-notebook-mern-six.vercel.app/',
+  },
+  {
+    image:   MovieMate,
+    title:   'MovieMate — Discovery App',
+    desc:    'Built a React.js movie discovery platform consuming the TMDB REST API — implemented search debouncing (300ms) to minimize API calls, localStorage watchlist persistence, lazy image loading for Core Web Vitals optimization, and optimistic UI state updates for instant feedback.',
+    tags:    ['React', 'TMDB REST API', 'Performance', 'Local Storage'],
+    github:  'https://github.com/MOHDSAMIULLAH/MovieMate',
+    demo:    'https://moviemate-main.netlify.app/',
+  },
+]
+
+const cardVariant = {
+  hidden:  { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0  },
+}
 
 const Project = () => {
-
   return (
-    <section id='project'>
-      <h5>My recent work</h5>
-      <h2>Project</h2>
+    <section id="project">
+      <div className="container">
+        <motion.div
+          className="section__header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="section__label">Portfolio</span>
+          <h2 className="section__title">Featured Projects</h2>
+          <p className="section__subtitle">
+            Backend systems and full-stack applications — each one a study in architecture,
+            API design, and production-grade engineering.
+          </p>
+        </motion.div>
 
-      <div className="container project__container">
+        <div className="projects__grid">
+          {projects.map(({ image, title, desc, tags, github, demo, featured }, i) => (
+            <motion.article
+              key={title}
+              className={`project-card glass-card${featured ? ' project-card--featured' : ''}`}
+              variants={cardVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: (i % 3) * 0.1, ease: 'easeOut' }}
+              whileHover={{ y: -6 }}
+            >
+              {/* Image */}
+              <div className="project-card__image">
+                <img src={image} alt={`${title} screenshot`} loading="lazy" />
+                <div className="project-card__overlay">
+                  <a href={demo} target="_blank" rel="noopener noreferrer" className="project-card__overlay-btn" aria-label={`View ${title} live demo`}>
+                    <BsBoxArrowUpRight /> View Live
+                  </a>
+                </div>
+                {featured && <span className="project-card__featured">Featured</span>}
+              </div>
 
-        {/* **************************   Food Delivery Application      ************************** */}
+              {/* Body */}
+              <div className="project-card__body">
+                <h3 className="project-card__title">{title}</h3>
+                <p className="project-card__desc">{desc}</p>
 
-        <article className="project__item">
-          <div className="project__item-image">
-            <img src={food_ordering} alt="Notes App" />
-          </div>
-          <h3>Food Ordering App</h3>
+                {/* Tech tags */}
+                <div className="project-card__tags">
+                  {tags.map((tag) => (
+                    <span key={tag} className="tech-badge">{tag}</span>
+                  ))}
+                </div>
+              </div>
 
-
-          <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/food-ordering-App-next" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://food-ordering-app-six-xi.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
-          </div>
-        </article>
-
-    
-        {/* **************************   MERN E-Commerce Website      ************************** */}
-
-        <article className="project__item">
-          <div className="project__item-image">
-            <img src={store} alt="store App" />
-          </div>
-          <h3>E-Commerce Clothes store(NextJs)</h3>
-
-
-          <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/Ecommerce-NextJs-store" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://ecommerce-next-js-clothes-store.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
-          </div>
-        </article>
-    
-        {/* **************************   MERN E-Commerce Dashboard      ************************** */}
-
-        <article className="project__item">
-          <div className="project__item-image">
-            <img src={admin} alt="store App" />
-          </div>
-          <h3>Dashboard (Clothes store)</h3>
-
-
-          <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/Ecommerce-NextJs-admin" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://ecommerce-next-js-admin-ten.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
-          </div>
-        </article>
-    
-        {/* **************************   Home Rental Application      ************************** */}
-
-        <article className="project__item">
-          <div className="project__item-image">
-            <img src={PERN} alt="Notes App" />
-          </div>
-          <h3>PERN Chat App</h3>
-
-
-          <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/pern-chat-app" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://pern-chat-app-master-qq4p.onrender.com" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
-          </div>
-        </article>
-        {/* **************************   Social Media App      ************************** */}
-
-        {/* <article className="project__item">
-          <div className="project__item-image">
-            <img src={social} alt="Notes App" />
-          </div>
-          <h3>Social Media App</h3>
-
-
-          <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/Social-Media-App" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://social-media-app-eight-green.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
-          </div>
-        </article> */}
-
-    
-        {/* **************************   iNotebook      ************************** */}
-
-        <article className="project__item">
-          <div className="project__item-image">
-            <img src={iNotebook} alt="Notes App" />
-          </div>
-          <h3>iNotebook</h3>
-
-
-          <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/iNotebook-MERN" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://i-notebook-mern-six.vercel.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
-          </div>
-        </article>
-
-      
-        {/* **************************   MovieMate App     ************************** */}
-        <article className="project__item">
-          <div className="project__item-image">
-            <img src={MovieMate} alt="Notes App" />
-          </div>
-          <h3>MovieMate</h3>
-
-
-          <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/MovieMate" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://moviemate-main.netlify.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
-          </div>
-        </article>
-
-        {/* **************************   Text_Transform_App      ************************** */}
-
-        {/* <article className="project__item">
-          <div className="project__item-image">
-            <img src={Text_Transform_App} alt="Notes App" />
-          </div>
-          <h3>Text Format App</h3>
-
-          <div className="project__item-cta">
-            <a href="https://github.com/MOHDSAMIULLAH/Text-Format-App" className='btn' target="_blank" rel="noreferrer">Github</a>
-            <a href="https://text-format-app.netlify.app/" className='btn btn-primary' target="_blank" rel="noopener noreferrer">Live Demo</a>
-          </div>
-        </article> */}
-
-
+              {/* Footer */}
+              <div className="project-card__footer">
+                <a
+                  href={github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                  aria-label={`${title} GitHub repository`}
+                >
+                  <BsGithub /> Code
+                </a>
+                <a
+                  href={demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                  aria-label={`${title} live demo`}
+                >
+                  <BsBoxArrowUpRight /> Live Demo
+                </a>
+              </div>
+            </motion.article>
+          ))}
+        </div>
       </div>
     </section>
   )

@@ -1,50 +1,119 @@
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FaBars, FaTimes } from 'react-icons/fa'
 import './navbar.css'
-import {useState} from 'react'
-import {FaBars, FaTimes} from "react-icons/fa" 
+
+const links = [
+  { label: 'Home',       href: '#home'           },
+  { label: 'About',      href: '#about'           },
+  { label: 'Skills',     href: '#skills'          },
+  { label: 'AI / LLM',  href: '#ai-engineering'  },
+  { label: 'Projects',   href: '#project'         },
+  { label: 'Experience', href: '#training'        },
+  { label: 'Contact',    href: '#contact'         },
+]
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen]     = useState(false)
+  const [activeNav, setActiveNav]   = useState('#home')
+  const [scrolled, setScrolled]     = useState(false)
 
-    const [click, setclick] = useState(false);
-    const handleClick = () => setclick(!click);
-    const [activeNav, setActiveNav] = useState('#');
-    const [color, setColor] = useState(false);
-    const changeColor = () => {
-      if (window.scrollY >= 100){
-        setColor(true);
-      }else{
-        setColor(false);
-      }
-    };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY >= 80)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
-    window.addEventListener("scroll", changeColor);
+  const handleNavClick = (href) => {
+    setActiveNav(href)
+    setMenuOpen(false)
+  }
 
   return (
-    <div className={color ? "navbar navbar-bg" : "navbar"}>
-      <div className="container__navbar">
-        <div className="logo">
-          <a>Portfolio</a>
-        </div>
-        <div className="nav-elements">
-            
-          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                <li><a href="#home" rel="noreferrer" onClick={() => setActiveNav('#home')} className={activeNav === '#home' ? 'active' : ''}>Home</a></li>
-                <li><a href="#about" rel="noreferrer" onClick={() => setActiveNav('#about')} className= {activeNav ==='#about' ? 'active' : ''}>About</a></li>
-                <li><a href="#skills" rel="noreferrer" onClick={() => setActiveNav('#skills')} className= {activeNav ==='#skills' ? 'active' : ''}>Skills</a></li>
-                <li><a href="#project" rel="noreferrer" onClick={() => setActiveNav('#project')} className= {activeNav ==='#project' ? 'active' : ''}>Project</a></li>
-                <li><a href="#contact" rel="noreferrer" onClick={() => setActiveNav('#contact')} className= {activeNav ==='#contact' ? 'active' : ''}>Contact</a></li>
-          </ul>
-          <div className="hamburger" onClick={handleClick} size={20}>
-            {click ?(
-              <FaTimes />
-              ) :(
-                <FaBars />
-                )}
-            </div>
-            
+    <motion.header
+      className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
+      <div className="navbar__inner">
+        {/* Logo */}
+        <a href="#home" className="navbar__logo" onClick={() => handleNavClick('#home')}>
+          <span className="navbar__logo-dot" />
+          Samiullah
+        </a>
 
-        </div>
+        {/* Desktop Nav */}
+        <nav className="navbar__links" role="navigation" aria-label="Main navigation">
+          {links.map(({ label, href }) => (
+            <a
+              key={href}
+              href={href}
+              className={`navbar__link${activeNav === href ? ' navbar__link--active' : ''}`}
+              onClick={() => handleNavClick(href)}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
+        {/* CTA */}
+        <a
+          href="#contact"
+          className="btn btn-primary navbar__cta"
+          onClick={() => handleNavClick('#contact')}
+        >
+          Hire Me
+        </a>
+
+        {/* Hamburger */}
+        <button
+          className="navbar__hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </div>
-    </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.nav
+            className="navbar__mobile"
+            role="navigation"
+            aria-label="Mobile navigation"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
+            {links.map(({ label, href }, i) => (
+              <motion.a
+                key={href}
+                href={href}
+                className={`navbar__mobile-link${activeNav === href ? ' navbar__link--active' : ''}`}
+                onClick={() => handleNavClick(href)}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.06 }}
+              >
+                {label}
+              </motion.a>
+            ))}
+            <a
+              href="#contact"
+              className="btn btn-primary"
+              style={{ marginTop: '1rem', alignSelf: 'flex-start' }}
+              onClick={() => handleNavClick('#contact')}
+            >
+              Hire Me
+            </a>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </motion.header>
   )
 }
 

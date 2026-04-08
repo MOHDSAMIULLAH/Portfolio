@@ -1,22 +1,41 @@
-import React from 'react'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai'
+import { BiCode, BiGridAlt, BiMessageSquareDetail } from 'react-icons/bi'
 import './nav.css'
-import {AiOutlineHome} from 'react-icons/ai'
-import {AiOutlineUser} from 'react-icons/ai'
-import {BiBook} from 'react-icons/bi'
-import {RiServiceLine} from 'react-icons/ri'
-import {BiMessageSquareDetail} from 'react-icons/bi'
-import {useState} from 'react'
+
+const navItems = [
+  { icon: <AiOutlineHome />, href: '#home',     label: 'Home'       },
+  { icon: <AiOutlineUser />, href: '#about',    label: 'About'      },
+  { icon: <BiCode />,        href: '#skills',   label: 'Skills'     },
+  { icon: <BiGridAlt />,     href: '#project',  label: 'Projects'   },
+  { icon: <BiMessageSquareDetail />, href: '#contact', label: 'Contact' },
+]
 
 const Nav = () => {
-  const [activeNav, setActiveNav] = useState('#')
+  const [activeNav, setActiveNav] = useState('#home')
+
   return (
-    <nav>
-      <a href="#home" title='home' rel="noreferrer" onClick={() => setActiveNav('#home')} className={activeNav === '#home' ? 'active' : ''}><AiOutlineHome /></a>
-      <a href="#about" title='about' rel="noreferrer" onClick={() => setActiveNav('#about')} className= {activeNav ==='#about' ? 'active' : ''}><AiOutlineUser /></a>
-      <a href="#skills" title='skills' rel="noreferrer" onClick={() => setActiveNav('#skills')} className= {activeNav ==='#skills' ? 'active' : ''}><BiBook /></a>
-      <a href="#project" title='project' rel="noreferrer" onClick={() => setActiveNav('#project')} className= {activeNav ==='#project' ? 'active' : ''}><RiServiceLine /></a>
-      <a href="#contact" title='contact' rel="noreferrer" onClick={() => setActiveNav('#contact')} className= {activeNav ==='#contact' ? 'active' : ''}><BiMessageSquareDetail /></a>
-    </nav>
+    <motion.nav
+      className="floating-nav"
+      aria-label="Quick navigation"
+      initial={{ y: 80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.8, ease: 'easeOut' }}
+    >
+      {navItems.map(({ icon, href, label }) => (
+        <a
+          key={href}
+          href={href}
+          title={label}
+          aria-label={label}
+          className={`floating-nav__item${activeNav === href ? ' floating-nav__item--active' : ''}`}
+          onClick={() => setActiveNav(href)}
+        >
+          {icon}
+        </a>
+      ))}
+    </motion.nav>
   )
 }
 

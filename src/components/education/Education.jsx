@@ -1,79 +1,94 @@
-import React from "react";
-import { FaUserGraduate } from "react-icons/fa";
-import { FaGraduationCap } from "react-icons/fa";
-import { SlGraduation } from "react-icons/sl";
-import { GoBook } from "react-icons/go";
-import { BsFillJournalBookmarkFill } from "react-icons/bs";
+import { motion } from 'framer-motion'
+import { FaUserGraduate, FaGraduationCap } from 'react-icons/fa'
+import { SlGraduation } from 'react-icons/sl'
+import { BsFillJournalBookmarkFill } from 'react-icons/bs'
+import { GoBook } from 'react-icons/go'
 import './education.css'
-import '../about/about.css'
+
+const educationItems = [
+  {
+    icon:    <FaUserGraduate />,
+    degree:  'M.Tech — Electronics & Communication',
+    school:  'Jamia Millia Islamia (JMI)',
+    score:   '88%',
+    period:  '2021 – 2023',
+    color:   '#818cf8',
+  },
+  {
+    icon:    <FaGraduationCap />,
+    degree:  'B.E. — Electronics & Communication',
+    school:  'Jamia Millia Islamia (JMI)',
+    score:   '74%',
+    period:  '2016 – 2020',
+    color:   '#22d3ee',
+  },
+  {
+    icon:    <SlGraduation />,
+    degree:  'Diploma — Electronics Engineering',
+    school:  'Jamia Millia Islamia (JMI)',
+    score:   '79.9%',
+    period:  '2013 – 2016',
+    color:   '#f472b6',
+  },
+  {
+    icon:    <BsFillJournalBookmarkFill />,
+    degree:  'Senior Secondary (XII)',
+    school:  'Saint Vivekanand Sr Sec Public School, CBSE',
+    score:   '74%',
+    period:  '2011 – 2013',
+    color:   '#fb923c',
+  },
+  {
+    icon:    <GoBook />,
+    degree:  'Secondary School (X)',
+    school:  'Saint Vivekanand Sr Sec Public School, CBSE',
+    score:   '79.8%',
+    period:  '2009 – 2011',
+    color:   '#4ade80',
+  },
+]
 
 const Education = () => {
   return (
-    <div className="container edu__container">
-      <h2>Education and Experience</h2>
-      <div className="about__cards">
-        
-        <div className="card_line">
+    <section id="education">
+      <div className="container">
+        <motion.div
+          className="section__header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="section__label">Academic Background</span>
+          <h2 className="section__title">Education</h2>
+        </motion.div>
 
-        <article className="about__card">
-          <FaUserGraduate className="about__icon" />
-          <h5>MASTERS OF TECHNOLOGY <br /> (M.TECH)</h5>
-          <small>
-            Jamia Milia Islamia (JMI) <br />
-            88% <br />
-            Electronics and Communication(ECE)<br />
-            (2021-2023)
-          </small>
-        </article>
-
-        <article className="about__card">
-          <FaGraduationCap className="about__icon" />
-          <h5>BACHELOR OF ENGINEERING (B.E)</h5>
-          <small>
-            Jamia Milia Islamia  (JMI)<br />
-            74%,
-            <br />Electronics and Communication(ECE) <br />
-            (2016 - 2020)
-          </small>
-        </article>
-        
-        <article className="about__card">
-          <SlGraduation className="about__icon" />
-          <h5>DIPLOMA IN ELECTRONICS ENGINEERING</h5>
-          <small>
-            Jamia Milia Islamia (JMI)<br />
-            79.9%,
-            <br />Electronics and Communication(ECE) <br />
-            (2013 - 2016)
-          </small>
-        </article>
-        </div>
-        <div className="card_line">
-          <article className="about__card">
-            <BsFillJournalBookmarkFill className="about__icon" />
-            <h5>SENIOR SECONDARY (XII)</h5>
-            <small>
-              CBSE <br />
-              SAINT VIVEKANAND SR SEC PUBLIC SCHOOL, ETAWAH (UP)<br />
-              74%  <br />
-              (2011-2013)
-            </small>
-          </article>
-
-          <article className="about__card">
-            <GoBook className="about__icon" />
-            <h5>SECONDARY SCHOOL  (X)</h5>
-            <small>
-
-              CBSE <br />
-              SAINT VIVEKANAND SR SEC PUBLIC SCHOOL, ETAWAH (UP) <br />
-              79.8% <br />(2009-2011)
-            </small>
-          </article>
+        <div className="education__grid">
+          {educationItems.map(({ icon, degree, school, score, period, color }, i) => (
+            <motion.article
+              key={degree}
+              className="education__card glass-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.08, ease: 'easeOut' }}
+              whileHover={{ y: -4 }}
+            >
+              <span className="education__icon" style={{ color }} aria-hidden="true">
+                {icon}
+              </span>
+              <h4 className="education__degree">{degree}</h4>
+              <p className="education__school">{school}</p>
+              <div className="education__meta">
+                <span className="education__score">{score}</span>
+                <span className="education__period">{period}</span>
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
-    </div>
-  );
-};
+    </section>
+  )
+}
 
-export default Education;
+export default Education

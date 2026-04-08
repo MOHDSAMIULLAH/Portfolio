@@ -1,74 +1,152 @@
-.project__container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+/* ========== PROJECTS SECTION ========== */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
-.project__item {
-    background: var(--color-bg-variant);
-    padding: 1.3rem;
-    border-radius: 2rem;
-    border: 1px solid transparent;
-    transition: var(--transition);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: auto; 
+/* Project Card */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
 }
 
-.project__item:hover {
-    border-color: var(--color-primary-variant);
-    background: transparent;
-    
+.project-card--featured {
+  border-color: rgba(99,102,241,0.25);
 }
 
-.project__item-image {
-    border-radius: 1.5rem;
-    overflow: hidden;
-    
+/* Image */
+.project-card__image {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  height: 200px;
+  flex-shrink: 0;
 }
 
-.project__item-image img {
-    display: block;
-    object-fit: fill;
-    width: 100%;
-    height: 12rem;
+.project-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.project__item h3 {
-    margin: 1rem 1rem;
+.project-card:hover .project-card__image img {
+  transform: scale(1.06);
 }
 
-.project__item-cta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    position: relative;
-    /* margin-bottom: 1rem; */
-    bottom: 0;
-    /* background-color: bisque; */
-}
-.project__item-cta .btn{
-padding:.1rem 1rem;
+/* Overlay */
+.project-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 7, 15, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition);
+  backdrop-filter: blur(4px);
 }
 
-.description.active{
-    display: initial;
+.project-card:hover .project-card__overlay {
+  opacity: 1;
 }
-/* ================= Media QUERIES (MEDIUM DEVICE) ================= */
+
+.project-card__overlay-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  background: var(--gradient);
+  color: #fff;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transform: translateY(8px);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.project-card:hover .project-card__overlay-btn {
+  transform: translateY(0);
+}
+
+/* Featured badge */
+.project-card__featured {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  background: var(--gradient);
+  border-radius: 2rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Body */
+.project-card__body {
+  padding: 1.25rem 1.4rem 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.project-card__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.project-card__desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding-top: 0.25rem;
+}
+
+/* Footer */
+.project-card__footer {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem 1.4rem 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.project-card__footer .btn {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.82rem;
+  justify-content: center;
+}
+
+/* ========== RESPONSIVE ========== */
 @media screen and (max-width: 1024px) {
-    .project__container {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.2rem;
-    }
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
 }
 
-/* ================= Media QUERIES (SMALL DEVICE) ================= */
 @media screen and (max-width: 600px) {
-    .project__container {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
+  .projects__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .project-card__image {
+    height: 180px;
+  }
 }
