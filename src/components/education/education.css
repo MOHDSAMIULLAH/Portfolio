@@ -62,12 +62,33 @@
   .education__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  /* Center the lone last card (5th) */
+  .education__card:nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 0.625rem);
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .education__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .education__card:nth-child(5) {
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .education__grid {
     grid-template-columns: 1fr;
     gap: 0.875rem;
+  }
+  .education__card:nth-child(5) {
+    grid-column: span 1;
+    max-width: 100%;
+    margin: 0;
   }
   .education__card {
     flex-direction: row;

@@ -246,6 +246,16 @@
 }
 
 /* ── Responsive ── */
+@media screen and (max-width: 768px) {
+  .hero__content {
+    max-width: 560px;
+    gap: 1.2rem;
+  }
+  .hero__name {
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
+  }
+}
+
 @media screen and (max-width: 600px) {
   .hero__content {
     gap: 1.1rem;
@@ -254,5 +264,38 @@
   .hero__cta .btn-primary {
     padding: 0.68rem 1.4rem;
     font-size: 0.86rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero__cta {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .hero__cta .btn,
+  .hero__cta .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hero__content {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  .hero__cta {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero__cta .btn,
+  .hero__cta .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero__role-row {
+    flex-direction: column;
+    gap: 0.4rem;
   }
 }

@@ -49,11 +49,11 @@ const Home = () => {
         </motion.div> */}
 
         {/* Currently building */}
-        <motion.div className="hero__currently" {...fadeUp(0.56)}>
+        {/* <motion.div className="hero__currently" {...fadeUp(0.56)}>
           <MdRocketLaunch className="hero__currently-icon" />
           <span>Currently building:</span>
           <span className="hero__currently-highlight">AI Image Generation Pipeline @ ShelfEx</span>
-        </motion.div>
+        </motion.div> */}
 
         {/* CTAs */}
         <motion.div className="hero__cta" {...fadeUp(0.65)}>

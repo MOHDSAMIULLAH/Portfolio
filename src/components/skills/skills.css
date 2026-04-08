@@ -160,6 +160,16 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .skills__groups {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .skills__group {
+    padding: 1.5rem 1.5rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .skills__groups {
     grid-template-columns: 1fr;

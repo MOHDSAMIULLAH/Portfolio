@@ -184,6 +184,27 @@
 }
 
 /* ========== RESPONSIVE ========== */
+@media screen and (max-width: 1024px) {
+  .timeline {
+    max-width: 720px;
+  }
+  .timeline__card {
+    padding: 1.5rem 1.75rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .timeline {
+    max-width: 100%;
+  }
+  .timeline__card {
+    padding: 1.4rem 1.5rem;
+  }
+  .timeline__role {
+    font-size: 0.98rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .timeline::before {
     left: 14px;

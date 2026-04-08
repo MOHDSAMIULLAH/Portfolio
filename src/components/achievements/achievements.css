@@ -70,8 +70,26 @@
 
 @media screen and (max-width: 600px) {
   .achievements__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .achievement-card {
+    padding: 1.4rem 1rem;
+  }
+  .achievement-card__metric {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+  .achievement-card__label {
+    font-size: 0.78rem;
+  }
+  .achievement-card__detail {
+    font-size: 0.76rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .achievements__grid {
     grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
+    gap: 0.875rem;
   }
 }

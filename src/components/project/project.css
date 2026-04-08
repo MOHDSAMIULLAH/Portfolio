@@ -141,6 +141,16 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .project-card__image {
+    height: 180px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .projects__grid {
     grid-template-columns: 1fr;
