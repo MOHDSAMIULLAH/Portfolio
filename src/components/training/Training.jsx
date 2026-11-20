@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion'
+import paaknikahLogo from '../../assets/paaknikahlogo.jpeg'
+import shelfExLogo from '../../assets/shelfEx logo.png'
 import wasserstoff from '../../assets/wasserstoff.jpeg'
 import ibm         from '../../assets/ibm.png'
 import plax        from '../../assets/Plaxonic_Technologies.png'
@@ -6,15 +8,27 @@ import './training.css'
 
 const experiences = [
   {
-    logo:     null,
+    logo:     paaknikahLogo,
+    logoAlt:  'PaakNikah logo',
+    company:  'PaakNikah',
+    role:     'Full-Stack Developer',
+    type:     'Full-time',
+    period:   'Nov 2025 — Present',
+    current:  true,
+    points: [
+      'Built a full-stack matrimonial platform from the ground up — session-based authentication plus Google OAuth login, profile creation, match search, and shortlist/connect flows, with real-time chat between matched users.',
+      'Shipped premium subscription tiers, user verification, a notification system, private photo/contact sharing with granular access control, image uploads, and report/block tooling for a secure matchmaking experience.',
+      'Owned the product end-to-end as sole full-stack developer — technical architecture, deployment, infrastructure, and application security, built on a TypeScript and PostgreSQL stack.',
+    ],
+  },
+  {
+    logo:     shelfExLogo,
     logoAlt:  'ShelfEx logo',
-    initials: 'SX',
-    initialsColor: '#22d3ee',
     company:  'ShelfEx',
     role:     'Backend-Focused Fullstack Developer',
     type:     'Full-time',
-    period:   '2024 — Present',
-    current:  true,
+    period:   'Feb 2025 — Nov 2025',
+    current:  false,
     points: [
       'Architected an AI-powered text-to-image generation backend using Node.js, AWS Lambda, and SQS — processing thousands of async jobs with fan-out queue patterns and zero dropped requests.',
       'Engineered a Redis caching layer across high-traffic API routes, reducing PostgreSQL query load by 70% and improving P95 latency from 300ms to under 90ms.',

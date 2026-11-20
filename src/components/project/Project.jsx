@@ -5,17 +5,17 @@ import iNotebook   from '../../assets/iNotebook.PNG'
 import admin       from '../../assets/admin.png'
 import food_ordering from '../../assets/food_ordering.png'
 import store       from '../../assets/store.png'
-import PERN        from '../../assets/PERN.png'
+import paaknikah   from '../../assets/paaknikah.png'
 import './project.css'
 
 const projects = [
   {
-    image:   PERN,
-    title:   'PERN Real-Time Chat App',
-    desc:    'Engineered a production-grade real-time messaging system on the PERN stack — designed normalized PostgreSQL schema for message persistence, built a WebSocket server enabling sub-100ms delivery, and secured all API routes with JWT middleware and bcrypt-hashed credentials.',
-    tags:    ['PostgreSQL', 'Express', 'React', 'Node.js', 'WebSockets', 'JWT'],
-    github:  'https://github.com/MOHDSAMIULLAH/pern-chat-app',
-    demo:    'https://pern-chat-app-master-qq4p.onrender.com',
+    image:   paaknikah,
+    title:   'PaakNikah — Matrimonial Platform',
+    desc:    'Built a matrimonial platform for the Muslim community across India, focused on the Delhi NCR region — profile creation, match browsing filtered by education, profession, location, and community, secure in-platform messaging, verified profiles, and privacy-first design on a TypeScript/PostgreSQL backend.',
+    tags:    ['TypeScript', 'PostgreSQL', 'Docker'],
+    github:  'https://github.com/MOHDSAMIULLAH/paaknikah',
+    demo:    'https://www.paaknikah.com/',
     featured: true,
   },
   {
