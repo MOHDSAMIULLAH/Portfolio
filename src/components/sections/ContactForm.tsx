@@ -28,8 +28,8 @@ function validate(data: FormData): Errors {
 }
 
 const fieldBase = cn(
-  'w-full rounded-sm border bg-ink px-3.5 py-3 text-sm text-bone',
-  'placeholder:text-faint',
+  'w-full rounded-md border bg-canvas px-4 py-3.5 text-base text-ink',
+  'placeholder:text-slate/70',
   'transition-colors duration-200 ease-[var(--ease-out)]',
 )
 
@@ -76,11 +76,11 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="border border-line bg-ink-raised p-6 sm:p-8"
+      className="rounded-lg border border-line bg-paper p-8 sm:p-10"
     >
       <div className="grid gap-5">
         <div>
-          <label htmlFor="contact-name" className="tnum mb-2 block text-xs text-faint">
+          <label htmlFor="contact-name" className="tnum mb-2.5 block text-[length:var(--text-label)] text-green">
             name
           </label>
           <input
@@ -92,17 +92,17 @@ export function ContactForm() {
             aria-invalid={errors.name ? true : undefined}
             aria-describedby={errors.name ? 'contact-name-error' : undefined}
             onChange={() => clearError('name')}
-            className={cn(fieldBase, errors.name ? 'border-danger' : 'border-line-hi focus:border-brass')}
+            className={cn(fieldBase, errors.name ? 'border-danger' : 'border-line-strong focus:border-green-bright')}
           />
           {errors.name ? (
-            <p id="contact-name-error" className="mt-2 text-xs text-danger">
+            <p id="contact-name-error" className="mt-2.5 text-[0.875rem] text-danger">
               {errors.name}
             </p>
           ) : null}
         </div>
 
         <div>
-          <label htmlFor="contact-email" className="tnum mb-2 block text-xs text-faint">
+          <label htmlFor="contact-email" className="tnum mb-2.5 block text-[length:var(--text-label)] text-green">
             email
           </label>
           <input
@@ -116,17 +116,17 @@ export function ContactForm() {
             aria-invalid={errors.email ? true : undefined}
             aria-describedby={errors.email ? 'contact-email-error' : undefined}
             onChange={() => clearError('email')}
-            className={cn(fieldBase, errors.email ? 'border-danger' : 'border-line-hi focus:border-brass')}
+            className={cn(fieldBase, errors.email ? 'border-danger' : 'border-line-strong focus:border-green-bright')}
           />
           {errors.email ? (
-            <p id="contact-email-error" className="mt-2 text-xs text-danger">
+            <p id="contact-email-error" className="mt-2.5 text-[0.875rem] text-danger">
               {errors.email}
             </p>
           ) : null}
         </div>
 
         <div>
-          <label htmlFor="contact-message" className="tnum mb-2 block text-xs text-faint">
+          <label htmlFor="contact-message" className="tnum mb-2.5 block text-[length:var(--text-label)] text-green">
             message
           </label>
           <textarea
@@ -141,24 +141,24 @@ export function ContactForm() {
             className={cn(
               fieldBase,
               'resize-y',
-              errors.message ? 'border-danger' : 'border-line-hi focus:border-brass',
+              errors.message ? 'border-danger' : 'border-line-strong focus:border-green-bright',
             )}
           />
           {errors.message ? (
-            <p id="contact-message-error" className="mt-2 text-xs text-danger">
+            <p id="contact-message-error" className="mt-2.5 text-[0.875rem] text-danger">
               {errors.message}
             </p>
           ) : null}
         </div>
       </div>
 
-      <button type="submit" disabled={status === 'sending'} className={btn('solid', 'mt-6 w-full')}>
+      <button type="submit" disabled={status === 'sending'} className={btn('forest', 'mt-8 w-full')}>
         {status === 'sending' ? 'Sending…' : 'Send message'}
       </button>
 
-      <p aria-live="polite" className="mt-4 min-h-5 text-sm">
+      <p aria-live="polite" className="mt-5 min-h-6">
         {status === 'sent' ? (
-          <span className="text-brass">Message sent. I reply within 24 hours.</span>
+          <span className="font-medium text-green">Message sent. I reply within 24 hours.</span>
         ) : null}
         {status === 'failed' ? (
           <span className="text-danger">

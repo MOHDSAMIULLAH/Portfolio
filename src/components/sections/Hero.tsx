@@ -1,15 +1,16 @@
-import Image from 'next/image'
 import type { CSSProperties } from 'react'
 import { site } from '@/data/site'
 import { btn } from '@/components/ui/button'
+import { Magnetic } from '@/components/ui/Magnetic'
 import { DownloadIcon, GitHubIcon, LinkedInIcon } from '@/components/ui/Icon'
+import { HeroPortrait } from '@/components/sections/HeroPortrait'
 
-/** Hero entrance delays, deliberately uneven so the sequence reads as one move. */
-function lift(delay: number): CSSProperties {
-  return { '--lift-delay': `${delay}ms` } as CSSProperties
+/** Entrance delays, deliberately uneven so the sequence reads as one move. */
+function enter(delay: number, y = 20): CSSProperties {
+  return { '--enter-delay': `${delay}ms`, '--enter-y': `${y}px` } as CSSProperties
 }
 
-/** Spec-sheet strip under the hero. Facts the rest of the page then expands on. */
+/** Spec strip beneath the hero. Facts the rest of the page then expands on. */
 const specs = [
   { label: 'focus', value: 'Backend systems, APIs, cloud infrastructure' },
   { label: 'shipped', value: 'ShelfMuse, PaakNikah, HerbalCart' },
@@ -19,57 +20,77 @@ const specs = [
 
 export function Hero() {
   return (
-    <section id="top" aria-labelledby="hero-heading" className="pt-28 sm:pt-36 lg:pt-44">
-      <div className="shell">
-        <div className="grid gap-14 lg:grid-cols-12 lg:items-end lg:gap-12">
-          <div className="lg:col-span-7">
-            <p
-              className="lift tnum flex items-center gap-2.5 text-xs text-muted"
-              style={lift(0)}
-            >
-              <span className="relative grid size-2 place-items-center" aria-hidden="true">
-                <span className="absolute inset-0 rounded-full bg-brass" />
-                <span className="absolute inset-0 rounded-full bg-brass motion-safe:animate-ping" />
-              </span>
-              {site.availability}
-            </p>
+    <section
+      id="top"
+      aria-labelledby="hero-heading"
+      className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-24 lg:pt-48"
+    >
+      {/* Engineering graph paper. Barely there, but it stops the ivory reading flat. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.55] [background-image:linear-gradient(var(--color-line)_1px,transparent_1px),linear-gradient(90deg,var(--color-line)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_20%,transparent_75%)]"
+      />
 
+      <div className="shell relative">
+        <p
+          className="enter tnum inline-flex items-center gap-3 rounded-full border border-line bg-paper/70 py-2 pr-5 pl-3 text-[length:var(--text-label)] font-medium text-ink"
+          style={enter(0, 12)}
+        >
+          <span className="relative grid size-2.5 place-items-center" aria-hidden="true">
+            <span className="absolute inset-0 rounded-full bg-green-bright" />
+            <span className="pulse-ring absolute inset-0 rounded-full bg-green-bright" />
+          </span>
+          {site.availability}
+        </p>
+
+        <div className="mt-10 grid items-end gap-14 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-7">
             <h1
               id="hero-heading"
-              className="lift mt-6 text-[length:var(--text-display)] leading-[0.86] tracking-[-0.045em] text-bone"
-              style={lift(90)}
+              className="text-[length:var(--text-hero)] leading-[0.84] font-extrabold tracking-[-0.045em] text-ink"
             >
-              Mohd
-              <br />
-              Samiullah
+              <span className="enter block" style={enter(120, 28)}>
+                Mohd
+              </span>
+              {/* Indented, so the lockup has a diagonal rather than a flush edge. */}
+              <span className="enter block pl-[0.08em] sm:pl-[0.14em]" style={enter(220, 28)}>
+                Samiullah
+              </span>
             </h1>
 
-            <div className="lift mt-8 max-w-[44ch]" style={lift(190)}>
-              <hr className="rule" />
-              <p className="mt-5 text-[length:var(--text-h3)] leading-tight tracking-tight text-bone">
+            <div className="enter mt-10 max-w-[40ch]" style={enter(340)}>
+              <span className="block h-px w-24 bg-forest" aria-hidden="true" />
+              <p className="mt-6 text-[length:var(--text-h4)] leading-tight font-semibold text-forest">
                 {site.role}
               </p>
-              <p className="mt-4 text-[length:var(--text-lead)] leading-[1.55] text-muted">
+              <p className="mt-5 text-[length:var(--text-lead)] leading-[1.5] text-slate">
                 {site.summary}
               </p>
             </div>
 
-            <div className="lift mt-9 flex flex-wrap items-center gap-3" style={lift(280)}>
-              <a href={site.resume} download={site.resumeFileName} className={btn('solid')}>
-                <DownloadIcon className="text-base" />
-                Download CV
-              </a>
-              <a href="#contact" className={btn('outline')}>
-                Let’s build together
-              </a>
+            <div
+              className="enter mt-10 flex flex-wrap items-center gap-4"
+              style={enter(440)}
+            >
+              <Magnetic strength={0.28}>
+                <a href={site.resume} download={site.resumeFileName} className={btn('forest')}>
+                  <DownloadIcon className="text-xl" />
+                  Download CV
+                </a>
+              </Magnetic>
+              <Magnetic strength={0.28}>
+                <a href="#contact" className={btn('outline')}>
+                  Let’s collaborate
+                </a>
+              </Magnetic>
 
-              <div className="flex items-center gap-1 sm:ml-2">
+              <div className="flex items-center gap-2 sm:ml-2">
                 <a
                   href={site.linkedin}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn profile, opens in a new tab"
-                  className="grid size-11 place-items-center rounded-sm text-muted transition-colors duration-200 hover:text-brass"
+                  className="grid size-12 place-items-center rounded-full border border-line text-slate transition-colors duration-300 hover:border-forest hover:bg-forest hover:text-chalk"
                 >
                   <LinkedInIcon className="text-xl" />
                 </a>
@@ -78,7 +99,7 @@ export function Hero() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="GitHub profile, opens in a new tab"
-                  className="grid size-11 place-items-center rounded-sm text-muted transition-colors duration-200 hover:text-brass"
+                  className="grid size-12 place-items-center rounded-full border border-line text-slate transition-colors duration-300 hover:border-forest hover:bg-forest hover:text-chalk"
                 >
                   <GitHubIcon className="text-xl" />
                 </a>
@@ -86,49 +107,23 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="lift lg:col-span-5" style={lift(180)}>
-            <div className="relative mx-auto max-w-sm lg:max-w-none">
-              <div className="relative aspect-4/5 overflow-hidden rounded-md border border-line bg-surface">
-                <Image
-                  src="/images/mohd-samiullah.png"
-                  alt={`${site.name}, ${site.role}`}
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 34vw, (min-width: 640px) 24rem, 86vw"
-                  className="object-cover object-top grayscale-[0.65] transition-[filter] duration-700 ease-[var(--ease-out)] hover:grayscale-0"
-                />
-              </div>
-
-              <dl className="mt-4 border border-line bg-ink-raised p-5 sm:absolute sm:-bottom-7 sm:-left-7 sm:mt-0 sm:w-64 lg:-left-10">
-                <div>
-                  <dt className="tnum text-xs text-faint">now</dt>
-                  <dd className="mt-1 text-sm text-bone">Full Stack Developer, PaakNikah</dd>
-                </div>
-                <div className="mt-4 border-t border-line pt-4">
-                  <dt className="tnum text-xs text-faint">based</dt>
-                  <dd className="mt-1 text-sm text-bone">{site.location}</dd>
-                </div>
-              </dl>
-            </div>
+          {/* Pulled up so the arch breaks the grid line instead of sitting beside it. */}
+          <div className="enter lg:col-span-5 lg:-mt-28" style={enter(300, 32)}>
+            <HeroPortrait />
           </div>
         </div>
-      </div>
 
-      <div className="lift mt-20 sm:mt-28 lg:mt-24" style={lift(400)}>
-        <div className="shell">
-          <hr className="rule" />
-          <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {specs.map((spec) => (
-              <div
-                key={spec.label}
-                className="border-b border-line py-5 sm:border-r sm:px-6 sm:first:pl-0 sm:last:border-r-0 lg:border-b-0"
-              >
-                <dt className="tnum text-xs text-faint">{spec.label}</dt>
-                <dd className="mt-2 text-sm leading-relaxed text-bone">{spec.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+        <dl className="reveal-stagger mt-24 grid gap-px border-t border-line sm:mt-28 sm:grid-cols-2 lg:grid-cols-4">
+          {specs.map((spec) => (
+            <div
+              key={spec.label}
+              className="border-b border-line py-6 sm:border-r sm:px-7 sm:first:pl-0 sm:last:border-r-0 lg:border-b-0"
+            >
+              <dt className="tnum text-[length:var(--text-label)] text-green">{spec.label}</dt>
+              <dd className="mt-2.5 leading-snug font-medium text-ink">{spec.value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   )

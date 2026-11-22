@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist_Mono, Manrope } from 'next/font/google'
 import type { ReactNode } from 'react'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
@@ -7,14 +7,15 @@ import { site } from '@/data/site'
 import { skillGroups } from '@/data/skills'
 import './globals.css'
 
-const geistSans = Geist({
+const manrope = Manrope({
   subsets: ['latin'],
-  variable: '--font-geist-sans',
+  variable: '--font-manrope',
   display: 'swap',
 })
 
 const geistMono = Geist_Mono({
   subsets: ['latin'],
+  weight: ['400', '500'],
   variable: '--font-geist-mono',
   display: 'swap',
 })
@@ -75,8 +76,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#08090a',
-  colorScheme: 'dark',
+  themeColor: '#f3f0e8',
+  colorScheme: 'light',
 }
 
 /** Person schema, built from the same data the page renders. */
@@ -97,11 +98,11 @@ const personSchema = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${geistMono.variable}`}>
       <body>
         <a
           href="#top"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-sm focus:bg-brass focus:px-4 focus:py-2.5 focus:text-sm focus:font-medium focus:text-ink"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-sm focus:bg-forest focus:px-5 focus:py-3 focus:text-base focus:font-semibold focus:text-chalk"
         >
           Skip to content
         </a>

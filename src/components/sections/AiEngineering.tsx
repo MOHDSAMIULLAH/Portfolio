@@ -12,22 +12,22 @@ const flow = [
 ] as const
 
 const BOX_W = 140
-const BOX_H = 40
+const BOX_H = 44
 
 /**
- * Schematic of an LLM request path. Decorative: the stage list below carries the
- * same information as text, so this is hidden from assistive technology rather
- * than duplicated into it.
+ * Schematic of an LLM request path. Decorative: the stage list below carries
+ * the same information as text, so this is hidden from assistive technology
+ * rather than duplicated into it.
  */
 function PipelineSchematic() {
   return (
     <svg
-      viewBox="0 0 960 170"
-      className="hidden h-auto w-full text-muted sm:block"
+      viewBox="0 0 960 180"
+      className="hidden h-auto w-full sm:block"
       aria-hidden="true"
       focusable="false"
     >
-      <g fill="none" stroke="var(--color-line-hi)">
+      <g fill="none" stroke="var(--color-line-dark)" strokeWidth="1.5">
         {flow.slice(0, -1).map((node) => (
           <line
             key={`link-${node.label}`}
@@ -35,9 +35,11 @@ function PipelineSchematic() {
             y1={20 + BOX_H / 2}
             x2={node.x + BOX_W + 24}
             y2={20 + BOX_H / 2}
+            strokeDasharray="4 4"
+           
           />
         ))}
-        <line x1={398} y1={60} x2={398} y2={110} />
+        <line x1={398} y1={64} x2={398} y2={114} strokeDasharray="4 4" />
       </g>
 
       {flow.map((node) => {
@@ -49,17 +51,18 @@ function PipelineSchematic() {
               y={20}
               width={BOX_W}
               height={BOX_H}
-              rx={3}
-              fill="var(--color-ink-raised)"
-              stroke={accented ? 'var(--color-brass)' : 'var(--color-line-hi)'}
+              rx={22}
+              fill={accented ? 'var(--color-lime)' : 'var(--color-forest-deep)'}
+              stroke={accented ? 'var(--color-lime)' : 'var(--color-line-dark)'}
+              strokeWidth="1.5"
             />
             <text
               x={node.x + BOX_W / 2}
-              y={45}
+              y={47}
               textAnchor="middle"
-              fontSize={13}
+              fontSize={14}
               className="tnum"
-              fill={accented ? 'var(--color-brass)' : 'currentColor'}
+              fill={accented ? 'var(--color-ink)' : 'var(--color-chalk)'}
             >
               {node.label}
             </text>
@@ -69,20 +72,21 @@ function PipelineSchematic() {
 
       <rect
         x={328}
-        y={110}
+        y={114}
         width={BOX_W}
         height={BOX_H}
-        rx={3}
-        fill="var(--color-ink-raised)"
-        stroke="var(--color-line-hi)"
+        rx={22}
+        fill="var(--color-forest-deep)"
+        stroke="var(--color-line-dark)"
+        strokeWidth="1.5"
       />
       <text
         x={398}
-        y={135}
+        y={141}
         textAnchor="middle"
-        fontSize={13}
+        fontSize={14}
         className="tnum"
-        fill="currentColor"
+        fill="var(--color-chalk)"
       >
         vector store
       </text>
@@ -95,48 +99,47 @@ export function AiEngineering() {
     <Section
       id="ai"
       note="one shipped, the rest in hand"
-      title="AI & LLM Engineering"
-      intro="I treat LLM features as backend problems: retrieval quality, context budgets, latency and cost per call. The interesting work is the pipeline, not the prompt."
+      title="LLM features are backend problems"
+      intro="Retrieval quality, context budgets, latency and cost per call. The interesting work is the pipeline, not the prompt."
+      tone="forest"
     >
-      <div className="reveal border border-line bg-ink-raised p-6 sm:p-8">
-        <p className="tnum text-xs text-faint">in production</p>
-        <p className="mt-3 max-w-[70ch] text-[length:var(--text-lead)] leading-[1.55] text-bone">
+      <div className="reveal rounded-lg border border-lime/40 bg-forest-deep p-8 sm:p-12">
+        <p className="tnum text-[length:var(--text-label)] text-lime">in production</p>
+        <p className="mt-5 max-w-[46ch] text-[length:var(--text-h4)] leading-[1.35] font-semibold text-chalk">
           At ShelfEx I built and shipped the backend APIs for ShelfMuse, an
-          AI-powered production application, integrating OpenAI and Claude models,
-          and brought its response time down from 5 seconds to 3.
+          AI-powered production application, integrating OpenAI and Claude, and
+          brought its response time down from five seconds to three.
         </p>
-        <p className="mt-3 max-w-[70ch] text-sm leading-relaxed text-muted">
-          The capabilities below are the toolkit I build with. Where something has
-          not yet run in production, this page does not claim that it has.
+        <p className="mt-5 max-w-[58ch] leading-[1.65] text-chalk-dim">
+          The capabilities below are the toolkit I build with. Where something
+          has not yet run in production, this page does not claim that it has.
         </p>
       </div>
 
-      <div className="reveal mt-14 sm:mt-16">
+      <div className="reveal mt-16 sm:mt-20">
         <PipelineSchematic />
-
-        <div className="mt-0 sm:mt-14 xl:border-t xl:border-line">
-          <ol className="grid gap-0 xl:grid-cols-5 xl:gap-8">
-            {aiCapabilities.map((capability) => (
-              <li
-                key={capability.stage}
-                className="relative border-l border-line pb-9 pl-6 last:pb-0 xl:border-l-0 xl:pt-9 xl:pb-0 xl:pl-0"
-              >
-                <span
-                  aria-hidden="true"
-                  className="absolute top-0 left-0 hidden h-2.5 w-px -translate-y-1/2 bg-brass xl:block"
-                />
-                <p className="tnum text-xs text-brass">{capability.stage}</p>
-                <h3 className="mt-3 text-base leading-snug text-bone">
-                  {capability.title}
-                </h3>
-                <p className="mt-2.5 max-w-[46ch] text-sm leading-[1.7] text-muted">
-                  {capability.detail}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
       </div>
+
+      <ol className="reveal-stagger mt-4 grid gap-0 sm:mt-14 xl:grid-cols-5 xl:gap-8 xl:border-t xl:border-line-dark">
+        {aiCapabilities.map((capability) => (
+          <li
+            key={capability.stage}
+            className="relative border-l border-line-dark pb-9 pl-7 last:pb-0 xl:border-l-0 xl:pt-9 xl:pb-0 xl:pl-0"
+          >
+            <span
+              aria-hidden="true"
+              className="absolute top-0 left-0 hidden h-3 w-0.5 -translate-y-1/2 bg-lime xl:block"
+            />
+            <p className="tnum text-[length:var(--text-label)] text-lime">{capability.stage}</p>
+            <h3 className="mt-3.5 text-[length:var(--text-h4)] leading-snug font-semibold text-chalk">
+              {capability.title}
+            </h3>
+            <p className="mt-3 max-w-[44ch] leading-[1.65] text-chalk-dim">
+              {capability.detail}
+            </p>
+          </li>
+        ))}
+      </ol>
     </Section>
   )
 }

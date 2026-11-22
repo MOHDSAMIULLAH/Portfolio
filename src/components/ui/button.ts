@@ -1,22 +1,23 @@
 import { cn } from '@/lib/utils'
 
-export type ButtonVariant = 'solid' | 'outline' | 'quiet'
+export type ButtonVariant = 'forest' | 'lime' | 'outline' | 'chalk'
 
 const base = cn(
-  'inline-flex items-center justify-center gap-2 rounded-sm px-5 py-3',
-  'text-sm font-medium tracking-tight whitespace-nowrap',
-  // Listed explicitly rather than `transition-all`, and limited to compositor-safe properties.
-  'transition-[color,background-color,border-color,transform] duration-200 ease-[var(--ease-out)]',
-  'active:scale-[0.98]',
+  'group/btn relative inline-flex items-center justify-center gap-2.5 rounded-full',
+  'px-7 py-4 text-base font-semibold tracking-[-0.01em] whitespace-nowrap',
+  // Listed explicitly rather than `transition-all`, and only compositor-safe properties.
+  'transition-[background-color,border-color,color,transform,box-shadow] duration-300 ease-[var(--ease-out)]',
+  'active:scale-[0.97]',
 )
 
 const variants: Record<ButtonVariant, string> = {
-  solid: 'bg-brass text-ink hover:bg-brass-hi',
-  outline: 'border border-line-hi text-bone hover:border-brass hover:text-brass',
-  quiet: 'text-muted hover:text-bone',
+  forest: 'bg-forest text-chalk hover:bg-forest-deep hover:shadow-[0_12px_28px_-14px_#193a30]',
+  lime: 'bg-lime text-ink hover:brightness-105 hover:shadow-[0_12px_28px_-14px_#193a30]',
+  outline: 'border border-line-strong bg-transparent text-ink hover:border-forest hover:bg-paper',
+  chalk: 'border border-line-dark bg-transparent text-chalk hover:border-lime hover:text-lime',
 }
 
-/** Shared button surface, applied directly to `<a>` or `<button>` so the element stays semantic. */
+/** Shared button surface, applied to `<a>` or `<button>` so the element stays semantic. */
 export function btn(variant: ButtonVariant = 'outline', extra?: string): string {
   return cn(base, variants[variant], extra)
 }

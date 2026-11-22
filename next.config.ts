@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  experimental: {
+    // Rewrites the barrel import so only the used Motion entry points ship.
+    optimizePackageImports: ['motion'],
+  },
 }
 
 export default nextConfig

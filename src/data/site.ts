@@ -26,10 +26,17 @@ export const navLinks: readonly NavLink[] = [
   { label: 'About', id: 'about' },
   { label: 'Impact', id: 'impact' },
   { label: 'Stack', id: 'stack' },
-  { label: 'Work', id: 'work' },
+  { label: 'Experience', id: 'experience' },
   { label: 'Projects', id: 'projects' },
   { label: 'AI', id: 'ai' },
   { label: 'Contact', id: 'contact' },
+]
+
+/** Footer carries the sections the header leaves out. */
+export const footerLinks: readonly NavLink[] = [
+  ...navLinks.slice(0, 5),
+  { label: 'Education', id: 'education' },
+  ...navLinks.slice(5),
 ]
 
 export const contactChannels: readonly ContactChannel[] = [

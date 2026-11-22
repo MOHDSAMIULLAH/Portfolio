@@ -2,48 +2,90 @@ import type { ReactNode } from 'react'
 import type { SectionId } from '@/types'
 import { cn } from '@/lib/utils'
 
+/** Ground colour for a section. Forest bands break the ivory run-on. */
+export type Tone = 'canvas' | 'sage' | 'forest'
+
+const tones: Record<Tone, string> = {
+  canvas: 'bg-canvas text-ink',
+  sage: 'bg-canvas-alt text-ink',
+  forest: 'on-forest bg-forest text-chalk',
+}
+
+const noteTone: Record<Tone, string> = {
+  canvas: 'text-slate',
+  sage: 'text-slate',
+  forest: 'text-lime',
+}
+
+const introTone: Record<Tone, string> = {
+  canvas: 'text-slate',
+  sage: 'text-slate',
+  forest: 'text-chalk-dim',
+}
+
+const ruleTone: Record<Tone, string> = {
+  canvas: 'bg-line-strong',
+  sage: 'bg-line-strong',
+  forest: 'bg-lime',
+}
+
 interface SectionProps {
   readonly id: SectionId
-  /**
-   * Margin annotation. It carries information the heading does not, rather than
-   * restating it as a label.
-   */
+  /** Margin annotation carrying information the heading does not restate. */
   readonly note: string
-  readonly title: string
+  readonly title: ReactNode
   readonly intro?: string
+  readonly tone?: Tone
   readonly className?: string
   readonly children: ReactNode
 }
 
-/**
- * The page's structural unit: a hairline boundary, a margin annotation in the
- * left rail on wide screens, and the content column.
- */
-export function Section({ id, note, title, intro, className, children }: SectionProps) {
+export function Section({
+  id,
+  note,
+  title,
+  intro,
+  tone = 'canvas',
+  className,
+  children,
+}: SectionProps) {
   const headingId = `${id}-heading`
 
   return (
     <section
       id={id}
       aria-labelledby={headingId}
-      className={cn('border-t border-line py-20 sm:py-28', className)}
+      className={cn('py-24 sm:py-32 lg:py-40', tones[tone], className)}
     >
       <div className="shell">
-        <div className="grid gap-8 lg:grid-cols-[var(--rail)_minmax(0,1fr)] lg:gap-12">
-          <div className="lg:pt-2">
-            <p className="tnum flex items-center gap-3 text-xs text-faint lg:flex-col lg:items-start lg:gap-2">
-              <span className="h-px w-8 bg-brass-dim lg:w-6" aria-hidden="true" />
+        <div className="grid gap-8 lg:grid-cols-[var(--rail)_minmax(0,1fr)] lg:gap-14">
+          <div className="lg:pt-5">
+            <p
+              className={cn(
+                'tnum flex items-center gap-3 text-[length:var(--text-label)] lg:flex-col lg:items-start lg:gap-3',
+                noteTone[tone],
+              )}
+            >
+              <span className={cn('h-px w-10 lg:w-8', ruleTone[tone])} aria-hidden="true" />
               <span className="lg:text-balance">{note}</span>
             </p>
           </div>
 
           <div className="min-w-0">
-            <header className={cn('reveal', intro ? 'mb-12 sm:mb-16' : 'mb-10 sm:mb-14')}>
-              <h2 id={headingId} className="text-[length:var(--text-h2)] text-bone">
+            <header className={cn('reveal', intro ? 'mb-14 sm:mb-18' : 'mb-12 sm:mb-16')}>
+              <h2
+                id={headingId}
+                className="max-w-[18ch] text-[length:var(--text-h2)] font-semibold"
+              >
                 {title}
               </h2>
               {intro ? (
-                <p className="mt-5 max-w-[58ch] text-[length:var(--text-lead)] leading-[1.55] text-muted">
+                <p
+                  className={cn(
+                    'mt-7 max-w-[46ch] text-[length:var(--text-lead)] leading-[1.5]',
+                    introTone[tone],
+                  )}
+                >
                   {intro}
                 </p>
               ) : null}

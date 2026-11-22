@@ -7,29 +7,32 @@ export function Impact() {
     <Section
       id="impact"
       note="measured, not estimated"
-      title="Impact"
-      intro="Four results from production systems, each one a number I watched move."
+      title="Four numbers I watched move"
+      intro="Results from production systems. Nothing here is an estimate, and nothing is listed that my CV does not state."
+      tone="forest"
     >
-      <ol className="reveal border-t border-line">
+      <ol className="reveal-stagger grid gap-px border-t border-line-dark sm:grid-cols-2">
         {achievements.map((item) => (
           <li
             key={`${item.label}-${item.where}`}
-            className="group grid gap-x-10 gap-y-5 border-b border-line py-9 transition-colors duration-300 ease-[var(--ease-out)] hover:border-b-brass-dim sm:py-11 lg:grid-cols-12 lg:items-baseline"
+            className="group border-b border-line-dark py-10 sm:px-10 sm:py-12 sm:nth-[odd]:border-r sm:nth-[odd]:pl-0 sm:nth-[even]:pr-0"
           >
-            <div className="lg:col-span-3">
-              <CountUp value={item.value} unit={item.unit} />
-            </div>
-
-            <div className="lg:col-span-4">
-              <h3 className="text-[length:var(--text-h3)] text-bone">{item.label}</h3>
-              <p className="tnum mt-2 text-xs text-faint transition-colors duration-300 group-hover:text-brass">
+            {/* Wraps rather than clipping: the company name is long on 320px. */}
+            <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-4">
+              <CountUp
+                value={item.value}
+                unit={item.unit}
+                className="text-lime transition-transform duration-500 ease-[var(--ease-out)] group-hover:-translate-y-1"
+              />
+              <span className="tnum max-w-full rounded-full border border-line-dark px-3 py-1 text-[length:var(--text-label)] text-chalk-dim transition-colors duration-300 group-hover:border-lime group-hover:text-lime sm:mt-2">
                 {item.where}
-              </p>
+              </span>
             </div>
 
-            <p className="max-w-[52ch] leading-[1.7] text-muted lg:col-span-5">
-              {item.detail}
-            </p>
+            <h3 className="mt-8 text-[length:var(--text-h4)] font-semibold text-chalk">
+              {item.label}
+            </h3>
+            <p className="mt-3 max-w-[44ch] leading-[1.65] text-chalk-dim">{item.detail}</p>
           </li>
         ))}
       </ol>

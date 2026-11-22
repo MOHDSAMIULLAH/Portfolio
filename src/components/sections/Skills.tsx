@@ -2,11 +2,11 @@ import { Section } from '@/components/ui/Section'
 import { skillGroups } from '@/data/skills'
 import { cn } from '@/lib/utils'
 
-/** Emphasis is encoded by the marker's shape as well as its colour. */
+/** Emphasis is encoded by the marker's fill as well as its colour. */
 const marker: Record<string, string> = {
-  core: 'bg-brass border-brass',
-  standard: 'bg-brass-dim border-brass-dim',
-  supporting: 'bg-transparent border-line-hi',
+  core: 'bg-green-bright border-green-bright',
+  standard: 'bg-lime border-green-bright',
+  supporting: 'bg-transparent border-line-strong',
 }
 
 export function Skills() {
@@ -14,39 +14,42 @@ export function Skills() {
     <Section
       id="stack"
       note="filled marker means core"
-      title="Stack"
+      title="What I build with"
       intro="Backend first: scalable APIs, cloud infrastructure and the data layer underneath, with enough frontend to carry a product all the way out."
+      tone="sage"
     >
-      <div className="reveal group/stack border-t border-line">
+      <div className="reveal-stagger grid gap-6 lg:grid-cols-2">
         {skillGroups.map((group) => (
-          <div
+          <section
             key={group.name}
-            className="grid gap-5 border-b border-line py-8 transition-opacity duration-300 ease-[var(--ease-out)] group-hover/stack:opacity-55 hover:opacity-100! lg:grid-cols-12 lg:gap-10"
+            aria-label={group.name}
+            className="group rounded-lg border border-line bg-paper p-8 transition-[border-color,transform,box-shadow] duration-400 ease-[var(--ease-out)] hover:-translate-y-1 hover:border-green-bright hover:shadow-[0_22px_44px_-30px_#193a30] sm:p-10"
           >
-            <div className="lg:col-span-4">
-              <h3 className="flex items-center gap-3 text-[length:var(--text-h3)] text-bone">
-                <span
-                  className={cn('size-2 shrink-0 border', marker[group.emphasis])}
-                  aria-hidden="true"
-                />
-                {group.name}
-              </h3>
-              <p className="mt-2 pl-5 text-sm text-faint">{group.note}</p>
-            </div>
+            <h3 className="flex items-center gap-3.5 text-[length:var(--text-h4)] font-semibold tracking-[-0.02em] text-ink">
+              <span
+                className={cn(
+                  'size-3 shrink-0 rotate-45 border transition-transform duration-400 ease-[var(--ease-out)] group-hover:rotate-[135deg]',
+                  marker[group.emphasis],
+                )}
+                aria-hidden="true"
+              />
+              {group.name}
+            </h3>
+            <p className="mt-2.5 pl-[1.625rem] text-[length:var(--text-label)] text-slate">
+              {group.note}
+            </p>
 
-            {/* content-start keeps the wrapped lines from stretching, which would
-                otherwise pull each item's underline away from its text. */}
-            <ul className="flex flex-wrap content-start items-start gap-x-6 gap-y-3 lg:col-span-8">
+            <ul className="mt-7 flex flex-wrap content-start items-start gap-2.5">
               {group.items.map((item) => (
                 <li
                   key={item}
-                  className="tnum border-b border-line pb-1 text-sm text-muted transition-colors duration-200 hover:border-brass hover:text-bone"
+                  className="tnum rounded-full border border-line bg-canvas px-3.5 py-2 text-[0.8125rem] font-medium text-ink transition-[background-color,border-color,transform] duration-250 ease-[var(--ease-out)] hover:-translate-y-0.5 hover:border-green-bright hover:bg-lime"
                 >
                   {item}
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
         ))}
       </div>
     </Section>

@@ -3,7 +3,7 @@ export type SectionId =
   | 'about'
   | 'impact'
   | 'stack'
-  | 'work'
+  | 'experience'
   | 'projects'
   | 'ai'
   | 'education'
@@ -30,22 +30,54 @@ export interface ImageAsset {
   readonly alt: string
 }
 
-/** Controls how much of the projects grid a card claims. */
+/** Controls how much of the projects grid an entry claims. */
 export type ProjectWeight = 'feature' | 'standard' | 'compact'
+
+/**
+ * Whether a deployment is currently reachable. Entries marked `paused` keep
+ * their URL in the data but render as a note, so the page carries no link that
+ * resolves to an error page.
+ */
+export type DemoStatus = 'live' | 'paused'
 
 export interface Project {
   readonly slug: string
   readonly name: string
   readonly tagline: string
-  readonly problem: string
-  readonly approach: string
+  /** Business or problem context the work sat inside. */
+  readonly context: string
+  /** What I personally built. */
+  readonly contribution: string
+  /** The hardest technical constraint. */
+  readonly challenge: string
+  /** How it was solved. */
+  readonly solution: string
   readonly features: readonly string[]
   readonly stack: readonly string[]
-  /** Null when the source is closed, which is rendered as a note, never as a dead link. */
+  /** Null when the source is closed; rendered as a note, never as a dead link. */
   readonly repo: string | null
   readonly demo: string | null
+  readonly demoStatus: DemoStatus
+  /** Explains an absent repo or demo in the reader's terms. */
+  readonly accessNote: string | null
   readonly weight: ProjectWeight
-  readonly shot: ImageAsset
+  /** Null where no genuine screenshot exists; a topology is drawn instead. */
+  readonly shot: ImageAsset | null
+  /** Stages drawn as a diagram when there is no screenshot. */
+  readonly topology: Topology | null
+}
+
+export interface TopologyNode {
+  readonly node: string
+  /** What actually runs at this stage. */
+  readonly detail: string
+  /** Marks the stage the project is really about. */
+  readonly accent?: boolean
+}
+
+export interface Topology {
+  readonly label: string
+  readonly nodes: readonly TopologyNode[]
 }
 
 export interface Experience {
