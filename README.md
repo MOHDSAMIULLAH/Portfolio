@@ -1,39 +1,74 @@
-# Portfolio
+# Mohd Samiullah, portfolio
 
+Personal portfolio for a backend-focused fullstack engineer. Built as a single
+statically rendered page on the Next.js App Router.
 
-## Hoisted Link:  https://portfolio-samiullah.netlify.app/
+Live: https://portfolio-samiullah.netlify.app
 
+## Stack
 
-• Developed a professional-grade portfolio website using HTML, CSS, JavaScript, and React.</br>
+| Concern | Choice |
+| --- | --- |
+| Framework | Next.js 16, App Router, Server Components by default |
+| Language | TypeScript, strict |
+| Styling | Tailwind CSS 4, CSS-first tokens in `src/app/globals.css` |
+| Type | Geist and Geist Mono via `next/font` |
+| Motion | `motion` for the metric count-up; everything else is CSS |
+| Contact | EmailJS, optional (see below) |
 
-• Designed a visually appealing and intuitive user interface to showcase your skills and projects.</br>
+## Running it
 
-• Demonstrated proficiency in front-end web development, including responsive design.</br>
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build
+npm run start      # serve the production build
+npm run lint       # ESLint, flat config
+npm run typecheck  # tsc --noEmit
+```
 
-• Implemented smooth navigation and user-friendly features, such as dropdown menus and back-to-top buttons. </br>
+## Contact form
 
-• Utilized internal navigation, conditional rendering and media queries for better UI/UX.</br>
+The contact section renders a form only when all three EmailJS variables are
+present. Without them it renders direct contact channels instead, so there is
+never a form on the page that cannot deliver.
 
-• Deployment: Successfully deployed the portfolio website, making it accessible globally.
+Copy `.env.example` to `.env.local` and fill in the values from the EmailJS
+dashboard. The template must expose `name`, `email` and `message` fields, which
+are the input names the form submits.
 
-• Showcased my skills and work through project galleries and detailed Live Demos.</br>
+## Project layout
 
-• Tech Stack: HTML, CSS, JavaScript, and React.</br>
+```
+src/
+  app/            layout, page, globals.css, sitemap, robots, OG image
+  components/
+    layout/       Header, Footer
+    sections/     one component per page section
+    ui/           Section shell, button classes, icons, CountUp
+  data/           site, projects, experience, skills, achievements
+  lib/            small helpers (class joining, EmailJS config)
+  types/          shared types
+public/
+  images/ logos/ projects/ resume/
+```
 
-### Home:
+Content lives in `src/data` and is typed by `src/types`. Sections read from
+there rather than hard-coding copy, so updating a role or project is a data
+edit.
 
-![image](https://user-images.githubusercontent.com/91786605/235806298-1fee4611-cb3c-4044-861f-302b650fa52c.png)
+## Design system
 
-### About:
+Defined once as Tailwind theme tokens in `src/app/globals.css`:
 
-![image](https://user-images.githubusercontent.com/91786605/235806444-d25e1f0d-47c7-4bed-980d-74872a9107d6.png)
+- Ink `#08090a` ground, bone `#ecedee` type, one brass `#c8a961` accent.
+- Structure comes from hairlines and alignment, not from boxes with shadows.
+- Monospace is reserved for data: metrics, dates, scores, technology names.
+- Motion is one orchestrated hero sequence plus scroll reveals; everything else
+  responds to a user action. All of it respects `prefers-reduced-motion`.
 
-### Skills:
+## Measured
 
-![image](https://user-images.githubusercontent.com/91786605/235806636-06ca1bc2-a506-419a-a214-9e42a5a23eec.png)
-
-
-
-### Contact:
-
-![image](https://user-images.githubusercontent.com/91786605/235806847-adae0483-aa43-4faa-87f3-59410140c862.png)
+Lighthouse against the production build, desktop preset: 100 performance, 100
+accessibility, 100 best practices, 100 SEO. Mobile preset (throttled): 95
+performance, 100 accessibility, 100 best practices, 100 SEO.
